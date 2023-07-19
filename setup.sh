@@ -1,3 +1,11 @@
+#!/bin/bash
+
+chmod +x ~/environment/interface_app/setup.sh
+chmod +x ~/environment/interface_app/ecr.sh
+chmod +x ~/environment/interface_app/make_all.sh
+chmod +x ~/environment/interface_app/imagepush.sh
+
+
 #자격증명 업데이트 확인
 rm -vf ${HOME}/.aws/credentials
 aws sts get-caller-identity --query Arn | grep eksworkspace-admin > output.txt
@@ -42,5 +50,8 @@ echo "export ACCOUNT_ID=${ACCOUNT_ID}" | tee -a ~/.bash_profile > output.txt
 wget https://gist.githubusercontent.com/joozero/b48ee68e2174a4f1ead93aaf2b582090/raw/2dda79390a10328df66e5f6162846017c682bef5/resize.sh
 sh resize.sh
 df -h > output.txt
+
+#소스코드 다운
+git clone https://github.com/TeamInterfaceSoldesk/interface_app.git
 
 cat output.txt
