@@ -19,10 +19,11 @@ source ~/.bash_profile
 aws --version >> output.txt
 
 #kubectl 설치
-sudo curl -o /usr/local/bin/kubectl  \
-   https://s3.us-west-2.amazonaws.com/amazon-eks/1.23.13/2022-10-31/bin/linux/amd64/kubectl
-sudo chmod +x /usr/local/bin/kubectl
-kubectl version --client=true --short=true >> output.txt
+sudo curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.27.1/2023-04-19/bin/linux/amd64/kubectl
+sudo chmod +x ./kubectl
+mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$HOME/bin:$PATH
+echo 'export PATH=$HOME/bin:$PATH' >> ~/.bashrc
+kubectl version --short --client >> output.txt
 
 #기타 툴 설치
 sudo yum install -y jq
