@@ -1,20 +1,19 @@
 #!/bin/bash
 
-aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin 480936841767.dkr.ecr.ap-northeast-2.amazonaws.com
+aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com
 
-docker tag order-docker:latest 480936841767.dkr.ecr.ap-northeast-2.amazonaws.com/interface_app:latest
+docker tag order-docker:latest $ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/interface_app:order-docker
 
-docker tag store-docker:latest 480936841767.dkr.ecr.ap-northeast-2.amazonaws.com/interface_app:latest
+docker tag store-docker:latest $ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/interface_app:store-docker
 
-docker tag user-docker:latest 480936841767.dkr.ecr.ap-northeast-2.amazonaws.com/interface_app:latest
+docker tag user-docker:latest $ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/interface_app:user-docker
 
-docker tag frontend-docker:latest 480936841767.dkr.ecr.ap-northeast-2.amazonaws.com/interface_app:latest
+docker tag front-docker:latest $ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/interface_app:front-docker
 
-docker push 480936841767.dkr.ecr.ap-northeast-2.amazonaws.com/interface_app:order-docker
+docker push $ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/interface_app:order-docker
 
-docker push 480936841767.dkr.ecr.ap-northeast-2.amazonaws.com/interface_app:store-docker
+docker push $ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/interface_app:store-docker
 
-docker push 480936841767.dkr.ecr.ap-northeast-2.amazonaws.com/interface_app:user-docker
+docker push $ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/interface_app:user-docker
 
-docker push 480936841767.dkr.ecr.ap-northeast-2.amazonaws.com/interface_app:frontend-docker
-
+docker push $ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/interface_app:front-docker
