@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.26.0 (40646f47)
+    traefik.enable: "true"
+    traefik.http.routers.store.rule: PathPrefix(`/api/store`)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: store
+  name: store
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: store
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.26.0 (40646f47)
+        traefik.enable: "true"
+        traefik.http.routers.store.rule: PathPrefix(`/api/store`)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: store
+    spec:
+      containers:
+        - image: store-docker
+          name: store-service
+          ports:
+            - containerPort: 9003
+          resources: {}
+      restartPolicy: Always
+status: {}

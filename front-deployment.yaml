@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.26.0 (40646f47)
+    traefik.enable: "true"
+    traefik.http.routers.front.rule: Path(`/`) || PathPrefix(`/w`)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: front
+  name: front
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: front
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.26.0 (40646f47)
+        traefik.enable: "true"
+        traefik.http.routers.front.rule: Path(`/`) || PathPrefix(`/w`)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: front
+    spec:
+      containers:
+        - image: front-docker
+          name: front-service
+          ports:
+            - containerPort: 9000
+          resources: {}
+      restartPolicy: Always
+status: {}
