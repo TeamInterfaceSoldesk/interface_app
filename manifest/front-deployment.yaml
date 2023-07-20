@@ -4,8 +4,7 @@ metadata:
   annotations:
     kompose.cmd: kompose convert
     kompose.version: 1.26.0 (40646f47)
-    traefik.enable: "true"
-    traefik.http.routers.front.rule: Path(`/`) || PathPrefix(`/w`)
+    nginx.server.location: /
   creationTimestamp: null
   labels:
     io.kompose.service: front
@@ -21,14 +20,13 @@ spec:
       annotations:
         kompose.cmd: kompose convert
         kompose.version: 1.26.0 (40646f47)
-        traefik.enable: "true"
-        traefik.http.routers.front.rule: Path(`/`) || PathPrefix(`/w`)
+        nginx.server.location: /
       creationTimestamp: null
       labels:
         io.kompose.service: front
     spec:
       containers:
-        - image: front-docker
+        - image: 480936841767.dkr.ecr.ap-northeast-2.amazonaws.com/interface_app:front-docker
           name: front-service
           ports:
             - containerPort: 9000

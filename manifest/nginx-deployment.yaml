@@ -4,32 +4,30 @@ metadata:
   annotations:
     kompose.cmd: kompose convert
     kompose.version: 1.26.0 (40646f47)
-    nginx.server.location: /api/user
   creationTimestamp: null
   labels:
-    io.kompose.service: user
-  name: user
+    io.kompose.service: nginx
+  name: nginx
 spec:
   replicas: 1
   selector:
     matchLabels:
-      io.kompose.service: user
+      io.kompose.service: nginx
   strategy: {}
   template:
     metadata:
       annotations:
         kompose.cmd: kompose convert
         kompose.version: 1.26.0 (40646f47)
-        nginx.server.location: /api/user
       creationTimestamp: null
       labels:
-        io.kompose.service: user
+        io.kompose.service: nginx
     spec:
       containers:
-        - image: 480936841767.dkr.ecr.ap-northeast-2.amazonaws.com/interface_app:user-docker
-          name: user-service
+        - image: nginx:latest
+          name: nginx
           ports:
-            - containerPort: 9002
+            - containerPort: 80
           resources: {}
       restartPolicy: Always
 status: {}

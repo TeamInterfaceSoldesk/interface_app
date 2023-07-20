@@ -4,8 +4,7 @@ metadata:
   annotations:
     kompose.cmd: kompose convert
     kompose.version: 1.26.0 (40646f47)
-    traefik.enable: "true"
-    traefik.http.routers.order.rule: PathPrefix(`/api/order`)
+    nginx.server.location: /api/order
   creationTimestamp: null
   labels:
     io.kompose.service: order
@@ -21,14 +20,13 @@ spec:
       annotations:
         kompose.cmd: kompose convert
         kompose.version: 1.26.0 (40646f47)
-        traefik.enable: "true"
-        traefik.http.routers.order.rule: PathPrefix(`/api/order`)
+        nginx.server.location: /api/order
       creationTimestamp: null
       labels:
         io.kompose.service: order
     spec:
       containers:
-        - image: order-docker
+        - image: 480936841767.dkr.ecr.ap-northeast-2.amazonaws.com/interface_app:order-docker
           name: order-service
           ports:
             - containerPort: 9001

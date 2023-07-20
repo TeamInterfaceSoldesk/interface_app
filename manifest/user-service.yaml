@@ -4,8 +4,7 @@ metadata:
   annotations:
     kompose.cmd: kompose convert
     kompose.version: 1.26.0 (40646f47)
-    traefik.enable: "true"
-    traefik.http.routers.user.rule: PathPrefix(`/api/user`)
+    nginx.server.location: /api/user
   creationTimestamp: null
   labels:
     io.kompose.service: user
